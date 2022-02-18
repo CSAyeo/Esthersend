@@ -8,6 +8,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
 from keras.layers import Dropout
+import ast
 import genData
 
 #DATA HANLDER
@@ -21,9 +22,15 @@ def scalertransform(training_set):
 def firstport():
     alldata = pd.read_csv('Data.csv', index_col=0)
     print(alldata)
-    portfolio = dataset_trainT.iloc[0, 19].values
+    portfolio = alldata.iloc[:, 0].values
     print(portfolio)
-    return portfolio.loc[1]
+    t = portfolio[0]
+    print(f"{t=}")
+    x = ast.literal_eval(t)
+    print(x)
+    df = pd.DataFrame(x)
+    print (df)
+    return df
 
 # Importing the training set
 dataset_trainT = pd.read_csv('Google_Stock_Price_Train.csv')
@@ -31,7 +38,7 @@ print(dataset_trainT)
 training_setT = dataset_trainT.iloc[:, 1:2].values
 print(training_setT)
 training_set =  firstport()
-print(training_set)
+print(training_set, "\n Reached transform")
 scalertransform(training_set)
 print(training_setT)
 
