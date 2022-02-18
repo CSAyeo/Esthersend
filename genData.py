@@ -6,7 +6,7 @@ import string
 setYear = 2015
 
 
-def genTrend(sCount, pCount, yCount):
+def genTrend(sCount, pCount, yCount): #sectors, portfolio, years
     a = 0.9
     b = 50
     f = []
@@ -32,5 +32,3 @@ def getVals():
 def setVals(df):
     print("Saving...")
     df.to_csv("Data.csv")
-
-setVals(genTrend(4,5, 150))

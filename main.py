@@ -12,12 +12,28 @@ import genData
 
 #DATA HANLDER
 
+def scalertransform(training_set):
+    j = []
+    for i in training_set:
+        j.append([i])
+    print(j)
+    return j
+def firstport():
+    alldata = pd.read_csv('Data.csv', index_col=0)
+    print(alldata)
+    portfolio = dataset_trainT.iloc[0, 19].values
+    print(portfolio)
+    return portfolio.loc[1]
+
 # Importing the training set
 dataset_trainT = pd.read_csv('Google_Stock_Price_Train.csv')
+print(dataset_trainT)
 training_setT = dataset_trainT.iloc[:, 1:2].values
-dataset_train = pd.read_csv('Data.csv')
-print(f"{dataset_trainT=} {training_setT=} {dataset_train=}")
-training_set = dataset_train.iloc[:, 1:2].values
+print(training_setT)
+training_set =  firstport()
+print(training_set)
+scalertransform(training_set)
+print(training_setT)
 
 # Feature Scaling
 from sklearn.preprocessing import MinMaxScaler #normalise the data
